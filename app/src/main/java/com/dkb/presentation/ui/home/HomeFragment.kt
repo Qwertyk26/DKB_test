@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.GridLayoutManager
 import com.dkb.R
@@ -39,6 +40,11 @@ class HomeFragment: BaseFragment() {
             if (it.isNullOrEmpty().not()) {
                 progress_bar.visibility = View.GONE
                 adapter.addList(it)
+            }
+        })
+        viewModel.error.observe(viewLifecycleOwner, { error ->
+            if (error.isNullOrEmpty().not()) {
+                Toast.
             }
         })
     }

@@ -9,6 +9,7 @@ import com.dkb.presentation.ui.base.BaseViewModel
 class HomeViewModel(private val getPhotosUseCase: GetPhotosUseCase): BaseViewModel() {
 
     private val images = MutableLiveData<Photos>()
+    val error =MutableLiveData<String>()
 
     init {
         fetchPhotos()
@@ -22,5 +23,8 @@ class HomeViewModel(private val getPhotosUseCase: GetPhotosUseCase): BaseViewMod
         getPhotosUseCase.getPhotos().doOnSuccess {
             images.postValue(it)
         }
+         getPhotosUseCase.getPhotos().doOnerror { error ->
+             error.postValue(error)
+         }
     }
 }

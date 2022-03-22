@@ -29,6 +29,12 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope, KoinComponent {
         }
     }
 
+    protected fun .donOneror {
+
+    }
+
+
+
     override fun onCleared() {
         supervisorJob.cancelChildren()
         super.onCleared()
